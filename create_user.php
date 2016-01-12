@@ -80,8 +80,8 @@
 					
 					$create_response = $User->createUser($create_user_email, $hash, $first_name, $last_name, $yearofbirth, $yearofbirthstart, $yearofbirthend);
 				}
-			}
-		}
+			
+		
 	}
 	
 	function cleanInput($data){
@@ -116,7 +116,7 @@
 			<input name="create_user_password" type="password" placeholder="Parool">* <?php echo $create_user_password_error; ?> <br><br>	
 			<input name="first_name" type="text" placeholder="Eesnimi" value="<?php echo $first_name; ?>">* <?php echo $first_name_error; ?> <br><br>
 			<input name="last_name" type="text" placeholder="Perekonnanimi" value="<?php echo $last_name; ?>">* <?php echo $last_name_error; ?> <br><br>
-			<input name="yearofbirth" type="text" placeholder="Sinu sünniaasta" value="<?php echo $dateofbirth; ?>">* <?php echo $dateofbirth_error; ?> <br><br>
+			<input name="yearofbirth" type="text" placeholder="Sinu sünniaasta" value="<?php echo $yearofbirth; ?>">* <?php echo $yearofbirth_error; ?> <br><br>
 			<input name="yearofbirthstart" type="text" placeholder="Vanima soovitud kirjasõbra sünniaasta" value="<?php echo $yearofbirthstart; ?>">* <?php echo $yearofbirthstart_error; ?> <br><br>
 			<input name="yearofbirthend" type="text" placeholder="Noorima soovitud kirjasõbra sünniaasta" value="<?php echo $yearofbirthend; ?>">* <?php echo $yearofbirthend_error; ?> <br><br>
 			<input name ="create_user" type="submit" value="Loo kasutaja">

@@ -1,5 +1,5 @@
 <?php
-	require_once("../../config_global.php");
+	require_once("../config_global.php");
     require_once("User.class.php");
 	$database = "if15_merit26_2";
 	

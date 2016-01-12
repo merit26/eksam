@@ -13,9 +13,9 @@ class User {
 		
 		$response = new StdClass();
 		
-		$stmt = $this->connection->prepare("SELECT user_id, user_group_ID, first_name, last_name, e_mail FROM users WHERE e_mail=? AND password=?");
+		$stmt = $this->connection->prepare("SELECT id, first_name, last_name, email FROM users WHERE email=? AND password=?");
 		$stmt->bind_param("ss", $email, $hash);
-		$stmt->bind_result($id_from_db, $group_id_from_db, $first_name_from_db, $last_name_from_db, $email_from_db);
+		$stmt->bind_result($id_from_db, $first_name_from_db, $last_name_from_db, $email_from_db);
 		$stmt->execute();
 		
 		if($stmt->fetch()){
@@ -25,7 +25,6 @@ class User {
 			
 			$user = new StdClass();
 			$user->id = $id_from_db;
-			$user->group_id = $group_id_from_db;
 			$user->first_name = $first_name_from_db;
 			$user->last_name = $last_name_from_db;
 			$user->email = $email_from_db;
@@ -45,24 +44,15 @@ class User {
 		
 		$stmt->close();
 		
-		if(isset($response->success)){
-			
-			$stmt = $this->connection->prepare("INSERT INTO history (user_ID, log_in) VALUES (?, NOW())");
-			$stmt->bind_param ("i", $response->success->user->id);
-			$stmt->execute();
-			$stmt->close();
-			
-		}
-       
-        return $response;
-	}
+		return $response;
+	}	
 	
-	function createUser($user_group, $first_name, $last_name, $create_user_email, $hash, $company_name, $company_description){
+	function createUser($create_user_email, $hash, $first_name, $last_name, $yearofbirth, $yearofbirthstart, $yearofbirthend){
 		
 		$response = new StdClass();
 
-		$stmt = $this->connection->prepare("INSERT INTO users (user_group_ID, first_name, last_name, e_mail, password, company_name, company_description, created) VALUES (?,?,?,?,?,?,?, NOW())");
-		$stmt->bind_param ("issssss", $user_group, $first_name, $last_name, $create_user_email, $hash, $company_name, $company_description);
+		$stmt = $this->connection->prepare("INSERT INTO users (email, password, first_name, last_name, yearofbirth, yearofbirthstart, yearofbirthend) VALUES (?,?,?,?,?,?,?)");
+		$stmt->bind_param ("ssssiii", $create_user_email, $hash, $first_name, $last_name, $yearofbirth, $yearofbirthstart, $yearofbirthend);
 		
 		if($stmt->execute()){
 			$success = new StdClass();	
@@ -78,14 +68,6 @@ class User {
 		$stmt->close();
 		return $response;
 	}
-	
-	function logoutUser(){
-
-		$stmt = $this->connection->prepare("INSERT INTO history (user_ID, log_out) VALUES (?, NOW())");
-		$stmt->bind_param ("i", $_SESSION["logged_in_user_id"]);
-		$stmt->execute();
-		$stmt->close();
-		
-	}
 }
+	
 ?>
