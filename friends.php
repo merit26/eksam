@@ -1,7 +1,7 @@
 <?php
 	require_once("functions.php");
 	require_once("FriendsManager.class.php");
-	
+	require_once("header.php");
 	
 	$FriendsManager = new FriendsManager($mysqli, $_SESSION["logged_in_user_id"]);
 	
@@ -27,12 +27,6 @@
      $friends_array = $FriendsManager->getAllFriends(); 
  ?>
 
-<h3>Otsing</h3>
-
-<form action="requests.php" method="get">
-	<input name="keyword" type="search" value="<?=$keyword?>">
-	<input type="submit" value="otsi">
-</form><br>
  
 <h1>Tabel</h1> 
 

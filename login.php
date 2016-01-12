@@ -3,11 +3,14 @@
 	require_once("functions.php");
 
 
+		
 	$email_error = "";
 	$password_error = "";
 
 	$email = "";
 	$password = "";
+	
+	
 
     if($_SERVER["REQUEST_METHOD"] == "POST") {
         
@@ -67,6 +70,7 @@
 		</p>
 		<?php endif; ?>
 		
+		<h3>Logi sisse</h3>
 		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 			<input name="email" type="email" placeholder="E-post" value ="<?php echo $email; ?>">* <?php echo $email_error; ?> <br><br>
 			<input name="password" type="password" placeholder="Parool">* <?php echo $password_error; ?> <br><br>

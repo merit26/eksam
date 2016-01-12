@@ -12,14 +12,10 @@ class FriendsManager {
 	
 	}
 	
-	function getAllFriends($keyword = ""){
-		if($keyword == ""){
-			$search = "%%";	
-		}else{
-			$search = "%".$keyword."%";
-		}
+	function getAllFriends(){
+		
 			
-		$stmt = $this->connection->prepare("SELECT id, email, first_name, last_name, yearofbirth, yearofbirthstart, yearofbirthend FROM users");
+		$stmt = $this->connection->prepare("SELECT id, email, first_name, last_name, yearofbirth, yearofbirthstart, yearofbirthend FROM users WHERE yearofbirthstart => ? AND yearofbirthend <= ? ");
 		//$stmt->bind_param("i", $this->user_id);
 		echo $this->connection->error;
 		$stmt->bind_result($id_from_db, $email_from_db, $first_name_from_db, $last_name_from_db, $yearofbirth_from_db, $yearofbirthstart_from_db, $yearofbirthend_from_db);
@@ -46,6 +42,9 @@ class FriendsManager {
 		
 		$stmt->close();
 	}
+	
+	
+	
 	
 	
 		

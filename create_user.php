@@ -1,7 +1,8 @@
 <?php	
 
 	require_once("functions.php");
-
+    require_once("header.php");
+	
 	$create_user_email_error = "";
 	$create_user_password_error = "";
 	$first_name_error = "";
@@ -94,7 +95,7 @@
 ?>
 <?php
 	
-	$page_title = "Ksutaja loomine";
+	$page_title = "Kasutaja loomine";
 	$page_file = "create_user.php"
 	
 ?>
@@ -110,6 +111,7 @@
 			</p>
 		<?php endif; ?>
 		
+		<h3>Loo kasutaja</h3>
 		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 			
 			<input name="create_user_email" type="email" placeholder="E-post" value="<?php echo $create_user_email; ?>">* <?php echo $create_user_email_error; ?> <br><br>
