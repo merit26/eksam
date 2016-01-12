@@ -94,7 +94,7 @@
 ?>
 <?php
 	
-	$page_title = "Create User";
+	$page_title = "Ksutaja loomine";
 	$page_file = "create_user.php"
 	
 ?>
@@ -121,5 +121,5 @@
 			<input name="yearofbirthend" type="text" placeholder="Noorima soovitud kirjasõbra sünniaasta" value="<?php echo $yearofbirthend; ?>">* <?php echo $yearofbirthend_error; ?> <br><br>
 			<input name ="create_user" type="submit" value="Loo kasutaja">
 		</form>
-<?php require_once("footer.php"); ?>
+
 

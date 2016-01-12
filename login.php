@@ -2,7 +2,6 @@
 
 	require_once("functions.php");
 
-    
 
 	$email_error = "";
 	$password_error = "";
@@ -38,8 +37,7 @@
 					$_SESSION["logged_in_user_last_name"] = $login_response->success->user->last_name;
 					$_SESSION["logged_in_user_email"] = $login_response->success->user->email;
 					
-					
-					
+				header("Location: friends.php");	
 					exit();
 				}
             }
@@ -74,4 +72,3 @@
 			<input name="password" type="password" placeholder="Parool">* <?php echo $password_error; ?> <br><br>
 			<input name="login" type="submit" value="Logi sisse">
 		</form>
-<?php require_once("footer.php"); ?>
